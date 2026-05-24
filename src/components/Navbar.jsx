@@ -12,7 +12,7 @@ export default function Navbar({ activeTab, setActiveTab }) {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="text-2xl font-serif font-bold text-amber-800 tracking-wider">NusaMeta</span>
+            <span className="text-2xl font-serif font-bold text-amber-800 tracking-wider">WarisanBudaya</span>
           </div>
 
           {/* Desktop Nav tabs */}

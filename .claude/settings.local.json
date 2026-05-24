@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p backup-src)",
+      "Bash(cp src/main.js backup-src/)",
+      "Bash(cp -r src/audio backup-src/)",
+      "Bash(cp -r src/controls backup-src/)",
+      "Bash(cp -r src/core backup-src/)",
+      "Bash(timeout 15 npm run dev)",
+      "Bash(npm run:*)",
+      "Bash(curl -s http://localhost:5173)"
+    ]
+  }
+}
