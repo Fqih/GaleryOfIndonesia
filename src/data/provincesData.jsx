@@ -59,7 +59,7 @@ export const provincesData = [
     desc: 'Wilayah adat suku Dayak dengan tradisi upacara adat, rumah betang, dan harmoni dengan alam yang mendalam.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Rumah Betang' },
-      { label: 'Baju Adat', value: 'Kosong之子 (Dayak)' },
+      { label: 'Baju Adat', value: 'Kekepa' },
       { label: 'Senjata', value: 'Mandau' },
       { label: 'Falsafah', value: 'Harmoni dengan Alam' },
     ],
@@ -81,7 +81,7 @@ export const provincesData = [
     id: 'sulsel',
     name: 'Sulawesi Selatan',
     ethnicity: 'Bugis-Makassar-Toraja',
-    color: '#8b0000',
+    color: '#b71c1c',
     desc: 'Wilayah budaya Bugis, Makassar, dan Toraja yang kuat dengan tradisi maritim serta rumah Tongkonan.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Rumah Tongkonan' },
