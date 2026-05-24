@@ -49,12 +49,12 @@ export default function TentangTab() {
           <h3 className="text-xl font-serif font-bold text-gray-900 mb-4">Tim Pengembang</h3>
           <div className="space-y-3">
             {[
-              { role: 'Project Lead, Collecting Material', name: 'Muhammad Faqih Hakim' },
-              { role: 'UI/UX Designer', name: 'Nama Developer' },
-              { role: '3D Artist', name: 'Nama Developer' },
-              { role: 'Frontend Developer', name: 'Nama Developer' },
-              { role: '3D Artist', name: 'Nama Developer' },
-              { role: 'Frontend Developer', name: 'Nama Developer' },
+              { role: 'Project Lead, Programmer, Designer, Collecting', name: 'Muhammad Faqih Hakim' },
+              { role: 'Designer (UI/UX), Collecting', name: 'Andi Maulana Firmansyah' },
+              { role: 'Designer (UI/UX), Collecting', name: 'Ferdy Agustian Prasetyo' },
+              { role: 'Designer (UI/UX), Collecting', name: 'Muchammad Fadhli Rochman' },
+              { role: 'Designer (UI/UX), Collecting', name: 'Muhammad Rifki' },
+              { role: 'Designer (UI/UX), Collecting', name: 'Trevin Hart Neville ' },
             ].map((dev) => (
               <div key={dev.role} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
                 <span className="text-gray-600 text-sm">{dev.role}</span>
