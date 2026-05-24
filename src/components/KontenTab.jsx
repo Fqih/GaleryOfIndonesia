@@ -17,7 +17,7 @@ export default function KontenTab() {
             filter: 'blur(8px)',
           }}
         />
-        <div className="absolute inset-0 z-0 bg-white/60" />
+        <div className="absolute inset-0 z-0 bg-white" />
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-12">
