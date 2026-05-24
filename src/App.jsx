@@ -15,8 +15,15 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('beranda');
   const [bgIndex, setBgIndex] = useState(0);
   const [isBlurring, setIsBlurring] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
+
+  // Auto-play audio on mount
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(() => {});
+    }
+  }, []);
 
   // Background slider — blur transition every 5 seconds
   useEffect(() => {
