@@ -49,8 +49,10 @@ export default function TentangTab() {
           <h3 className="text-xl font-serif font-bold text-gray-900 mb-4">Tim Pengembang</h3>
           <div className="space-y-3">
             {[
-              { role: 'Project Lead', name: 'Nama Developer' },
+              { role: 'Project Lead, Collecting Material', name: 'Muhammad Faqih Hakim' },
               { role: 'UI/UX Designer', name: 'Nama Developer' },
+              { role: '3D Artist', name: 'Nama Developer' },
+              { role: 'Frontend Developer', name: 'Nama Developer' },
               { role: '3D Artist', name: 'Nama Developer' },
               { role: 'Frontend Developer', name: 'Nama Developer' },
             ].map((dev) => (

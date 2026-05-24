@@ -3,7 +3,7 @@ import { useState } from 'react';
 const guideItems = [
   {
     title: 'Masuk ke Museum 3D',
-    icon: '🎮',
+    icon: '',
     steps: [
       'Klik tombol "Masuk Museum 3D" di navbar atau hero section.',
       'Ikuti instruksi kontrol yang muncul di layar.',
@@ -12,7 +12,7 @@ const guideItems = [
   },
   {
     title: 'Kontrol Desktop',
-    icon: '🖥️',
+    icon: '',
     steps: [
       'W / A / S / D — Bergerak ke depan, kiri, belakang, kanan.',
       'MOUSE — Melihat sekeliling 360°.',
@@ -21,17 +21,8 @@ const guideItems = [
     ],
   },
   {
-    title: 'Kontrol Mobile',
-    icon: '📱',
-    steps: [
-      'Joystick kiri — Menggerakkan karakter.',
-      'Swipe kanan — Melihat sekeliling.',
-      'Tombol aksi — Masuk ke ruangan / interaksi dengan objek.',
-    ],
-  },
-  {
     title: 'Interaksi dengan Objek Pajangan',
-    icon: '🖼️',
+    icon: '',
     steps: [
       'Dekati meja pajangan di dalam museum.',
       'Panel informasi akan muncul otomatis.',

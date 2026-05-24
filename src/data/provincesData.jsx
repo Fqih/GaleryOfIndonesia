@@ -4,6 +4,7 @@ export const provincesData = [
     name: 'Sumatera Barat',
     ethnicity: 'Minangkabau',
     color: '#8b0000',
+    cardImage: '/cardimg/sumatera.png',
     desc: 'Bumi Minangkabau yang memegang teguh sistem matrilineal dan dikenal dengan Rumah Gadang, Jam Gadang, serta falsafah adat yang kuat.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Rumah Gadang' },
@@ -17,6 +18,7 @@ export const provincesData = [
     name: 'Jawa Barat',
     ethnicity: 'Sunda',
     color: '#2e8b57',
+    cardImage: '/cardimg/sunda.jpg',
     desc: 'Tanah Pasundan yang dikenal dengan masyarakat Sunda yang ramah, seni angklung, dan alam pegunungan yang asri.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Julang Ngapak' },
@@ -30,6 +32,7 @@ export const provincesData = [
     name: 'Jawa Tengah',
     ethnicity: 'Jawa',
     color: '#cd853f',
+    cardImage: '/cardimg/jawa.jpeg',
     desc: 'Pusat budaya Jawa dengan peninggalan sejarah kerajaan, rumah Joglo, batik, gamelan, dan tradisi yang kuat.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Rumah Joglo' },
@@ -43,6 +46,7 @@ export const provincesData = [
     name: 'Bali',
     ethnicity: 'Bali (Hindu)',
     color: '#ff8c00',
+    cardImage: '/cardimg/bali.jpg',
     desc: 'Pulau Dewata yang termasyhur dengan tradisi Hindu, pura, seni tari, dan filosofi Tri Hita Karana.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Bale Manten' },
@@ -56,6 +60,7 @@ export const provincesData = [
     name: 'Kalimantan Timur',
     ethnicity: 'Dayak',
     color: '#8b4513',
+    cardImage: null,
     desc: 'Wilayah adat suku Dayak dengan tradisi upacara adat, rumah betang, dan harmoni dengan alam yang mendalam.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Rumah Betang' },
@@ -69,6 +74,7 @@ export const provincesData = [
     name: 'Papua',
     ethnicity: 'Papua (Dani)',
     color: '#556b2f',
+    cardImage: '/cardimg/papua.png',
     desc: 'Bumi Cendrawasih dengan kekayaan alam, budaya suku Dani, rumah Honai, dan panorama Raja Ampat.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Rumah Honai' },
@@ -82,6 +88,7 @@ export const provincesData = [
     name: 'Sulawesi Selatan',
     ethnicity: 'Bugis-Makassar-Toraja',
     color: '#b71c1c',
+    cardImage: '/cardimg/sulawesi.jpeg',
     desc: 'Wilayah budaya Bugis, Makassar, dan Toraja yang kuat dengan tradisi maritim serta rumah Tongkonan.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Rumah Tongkonan' },
