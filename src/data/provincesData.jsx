@@ -116,7 +116,7 @@ export const provincesData = [
     name: 'Kalimantan Timur',
     ethnicity: 'Dayak',
     color: '#8b4513',
-    cardImage: null,
+    cardImage: '/cardimg/dayak.jpg',
     desc: 'Wilayah adat suku Dayak dengan tradisi upacara adat, rumah betang, dan harmoni dengan alam yang mendalam.',
     exhibits: [
       { label: 'Rumah Adat', value: 'Rumah Betang' },
@@ -127,15 +127,15 @@ export const provincesData = [
     fullContent: [
       {
         title: 'Sejarah Suku Dayak',
-        body: 'Suku Dayak adalah masyarakat asli Kalimantan yang memiliki warisan budaya yang kaya dan unik. Tradisi mereka sangat berakar pada hubungan harmonis dengan alam sekitar. Rumah Betang merupakan rumah adat suku Dayak yang panjang dan dihuni secara komunal, mencerminkan semangat kebersamaan dan gotong royong masyarakatnya.',
+        body: 'Masyarakat Suku Dayak merupakan kelompok etnis asli yang secara historis mendiami pedalaman Pulau Kalimantan (Borneo). Pada mulanya, mereka bermukim di tepian laut dan sungai-sungai besar, namun dinamika zaman mendesak mereka semakin ke arah hulu, sehingga mereka secara historis kerap dijuluki sebagai "Orang Hulu". Jejak eksistensi masyarakat Dayak diyakini telah berakar sejak ribuan tahun silam, jauh sebelum datangnya pengaruh dari bangsa Melayu, Tionghoa, dan Eropa. Falsafah hidup Suku Dayak sangat bertumpu pada kepercayaan Kaharingan, sebuah ajaran animisme leluhur yang berpusat pada penghormatan terhadap roh-roh alam. Mereka meyakini bahwa segala bentuk kehidupan dan alam semesta memiliki makna spiritual yang mendalam, menciptakan ketergantungan dan keharmonisan mutlak antara manusia dan alam sekitarnya.',
       },
       {
         title: 'Kehidupan dan Tradisi',
-        body: 'Masyarakat Dayak memiliki tradisi upacara adat yang unik seperti perawatan mayat leluhur (Niar) dan berbagai ritual lainnya. Kekepa adalah pakaian adat tradisional suku Dayak berupa baju tanpa lengan yang dihiasi manik-manik dan bulu burung. Mandau adalah senjata tradisional suku Dayak yang berupa parang atau pedang pendek, menjadi simbol identitas dan kebanggaan pria Dayak.',
+        body: 'Identitas kuat Suku Dayak tercermin dari keragaman sub-suku, bahasa, dan sistem kemasyarakatannya yang sangat menjunjung tinggi hukum adat. Melalui penyebarannya, entitas Dayak berevolusi menjadi tujuh gugusan suku induk—seperti Ngaju, Apu Kayan, Iban, Klemantan, Murut, Punan, dan Ot-Danum—yang menyebar menjadi ratusan subsuku kekeluargaan dengan bahasa dan istilahnya masing-masing. Dinamika sejarah pergaulan dengan masyarakat pendatang juga melahirkan akulturasi sosial, di mana sebagian yang berasimilasi dan memeluk Islam dikenal dengan istilah "masok Melayu". Dalam sistem sosial, Suku Dayak mengikat erat persaudaraan komunal dan semangat gotong royong yang diwujudkan secara nyata melalui kehidupan berdampingan di bawah satu atap Rumah Panjang. Mereka juga memiliki kepatuhan yang absolut terhadap hukum adat tak tertulis; setiap tata aturan hidup dijaga ketat, dan siapapun yang melanggarnya, tanpa terkecuali, diwajibkan membayar sanksi adat.',
       },
       {
         title: 'Filosofi Hidup',
-        body: 'Filosofi hidup suku Dayak berlandaskan harmoni dengan alam. Mereka percaya bahwa alam adalah sumber kehidupan yang harus dijaga dan dihormati. Berbagai ritual dan tradisi mereka bertujuan untuk menjaga keseimbangan antara manusia dan alam sekitarnya. Rumah Betang sendiri mencerminkan nilai kekeluargaan dan kebersamaan yang menjadi dasar kehidupan masyarakat Dayak.',
+        body: 'Kebudayaan Suku Dayak terekam abadi melalui mahakarya seni ukir, ritual daur hidup, dan kesenian pertunjukan. Jejak sejarah keperkasaan masyarakat ini di masa lampau dapat ditelusuri dari tradisi ngayau, sebuah laku ksatria purba yang menjadi simbol keberanian dalam peperangan. Tradisi warisan nenek moyang juga masih dipertahankan melalui kepekaan membaca pertanda alam—seperti arah terbang burung "antang" atau kemunculan "anggoi" sebelum beraktivitas—serta ritual siklus hidup (kelahiran, perkawinan, kematian) yang memandu jiwa kembali ke asalnya. Kekayaan budaya ini disempurnakan oleh berbagai karya seni ikonik yang tak lekang oleh waktu, mulai dari simbolisme magis ukiran pada perisai dan perahu, alunan melodi dawai Sape, hingga keanggunan Tari Kancet Ledo (tari gong) yang senantiasa dipertunjukkan untuk menyambut tamu kehormatan.',
       },
     ],
   },
