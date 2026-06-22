@@ -51,7 +51,7 @@ export default function TentangTab() {
             {[
               { role: 'Project Lead, Programmer, Designer, Collecting', name: 'Muhammad Faqih Hakim' },
               { role: 'Designer (UI/UX), Collecting', name: 'Andi Maulana Firmansyah' },
-              { role: 'Designer (UI/UX), Collecting', name: 'Ferdy Agustian Prasetyo' },
+              { role: 'Voice Over , 3D ProgrammerDesigner (UI/UX), Collecting', name: 'Ferdy Agustian Prasetyo' },
               { role: 'Designer (UI/UX), Collecting', name: 'Muchammad Fadhli Rochman' },
               { role: 'Designer (UI/UX), Collecting', name: 'Muhammad Rifki' },
               { role: 'Designer (UI/UX), Collecting', name: 'Trevin Hart Neville ' },

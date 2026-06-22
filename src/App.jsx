@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import gsap from 'gsap';
 import Navbar from './components/Navbar.jsx';
 import BerandaTab from './components/BerandaTab.jsx';
 import KontenTab from './components/KontenTab.jsx';
 import PanduanTab from './components/PanduanTab.jsx';
 import TentangTab from './components/TentangTab.jsx';
+import Museum3DOverlay from './components/Museum3DOverlay.jsx';
 
 const backgrounds = [
   '/images/1.jpg',
@@ -16,11 +18,26 @@ export default function App() {
   const [bgIndex, setBgIndex] = useState(0);
   const [isBlurring, setIsBlurring] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuseumOpen, setIsMuseumOpen] = useState(false);
+  const [targetProvId, setTargetProvId] = useState(null);
   const audioRef = useRef(null);
+
+  // Volume States
+  const [bgVolume, setBgVolume] = useState(0.8);
+  const [narratorVolume, setNarratorVolume] = useState(1.0);
+  
+  const bgVolumeRef = useRef(0.8);
+  useEffect(() => {
+    bgVolumeRef.current = bgVolume;
+    if (audioRef.current && isPlaying) {
+      audioRef.current.volume = bgVolume;
+    }
+  }, [bgVolume, isPlaying]);
 
   // Auto-play audio on mount
   useEffect(() => {
     if (audioRef.current) {
+      audioRef.current.volume = 1.0;
       audioRef.current.play().catch(() => {});
     }
   }, []);
@@ -37,7 +54,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const toggleAudio = () => {
+  const toggleAudio = useCallback(() => {
     if (audioRef.current) {
       if (audioRef.current.paused) {
         audioRef.current.play().catch(() => {});
@@ -47,11 +64,23 @@ export default function App() {
         setIsPlaying(false);
       }
     }
-  };
+  }, []);
+
+  // Best Practice: Audio Ducking (Meredupkan BGM saat ada voice over)
+  const duckAudio = useCallback((isDucking) => {
+    if (audioRef.current) {
+      const currentBgVol = bgVolumeRef.current;
+      gsap.to(audioRef.current, {
+        volume: isDucking ? Math.min(0.03, currentBgVol) : currentBgVol,
+        duration: 1.5,
+        ease: "power2.inOut"
+      });
+    }
+  }, []);
 
   const tabs = {
-    beranda: <BerandaTab />,
-    konten: <KontenTab />,
+    beranda: <BerandaTab onOpenMuseum={() => setIsMuseumOpen(true)} />,
+    konten: <KontenTab targetProvId={targetProvId} onClearTargetProvId={() => setTargetProvId(null)} />,
     panduan: <PanduanTab />,
     tentang: <TentangTab />,
   };
@@ -94,11 +123,29 @@ export default function App() {
 
       {/* Content */}
       <div className="relative z-10">
-        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} onOpenMuseum={() => setIsMuseumOpen(true)} />
         <main className="pt-16">
           {tabs[activeTab]}
         </main>
       </div>
+
+      {isMuseumOpen && (
+        <Museum3DOverlay 
+          isMusicOn={isPlaying}
+          onToggleMusic={toggleAudio}
+          onDuckMusic={duckAudio}
+          bgVolume={bgVolume}
+          setBgVolume={setBgVolume}
+          narratorVolume={narratorVolume}
+          setNarratorVolume={setNarratorVolume}
+          onClose={() => setIsMuseumOpen(false)} 
+          onEnterPortal={(provId) => {
+            setIsMuseumOpen(false);
+            setTargetProvId(provId);
+            setActiveTab('konten');
+          }}
+        />
+      )}
     </div>
   );
 }

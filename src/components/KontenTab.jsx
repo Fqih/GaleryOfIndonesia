@@ -1,8 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { provincesData } from '../data/provincesData.jsx';
 
-export default function KontenTab() {
+export default function KontenTab({ targetProvId, onClearTargetProvId }) {
   const [selectedProv, setSelectedProv] = useState(null);
+
+  useEffect(() => {
+    if (targetProvId) {
+      const prov = provincesData.find((p) => p.id === targetProvId);
+      if (prov) {
+        setSelectedProv(prov);
+      }
+      if (onClearTargetProvId) {
+        onClearTargetProvId();
+      }
+    }
+  }, [targetProvId, onClearTargetProvId]);
 
   return (
     <>
