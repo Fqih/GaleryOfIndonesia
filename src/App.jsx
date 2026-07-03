@@ -5,7 +5,8 @@ import BerandaTab from './components/BerandaTab.jsx';
 import KontenTab from './components/KontenTab.jsx';
 import PanduanTab from './components/PanduanTab.jsx';
 import TentangTab from './components/TentangTab.jsx';
-import Museum3DOverlay from './components/Museum3DOverlay.jsx';
+import Museum3DOverlay from './components/museum/Museum3DOverlay.jsx';
+import RegionalRoomManager from './components/museum/regions/RegionalRoomManager.jsx';
 
 const backgrounds = [
   '/images/1.jpg',
@@ -18,7 +19,8 @@ export default function App() {
   const [bgIndex, setBgIndex] = useState(0);
   const [isBlurring, setIsBlurring] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuseumOpen, setIsMuseumOpen] = useState(false);
+  const [active3DRoom, setActive3DRoom] = useState(null); // null | 'main' | provId
+  const [lastVisitedRoom, setLastVisitedRoom] = useState(null);
   const [targetProvId, setTargetProvId] = useState(null);
   const audioRef = useRef(null);
 
@@ -79,11 +81,41 @@ export default function App() {
   }, []);
 
   const tabs = {
-    beranda: <BerandaTab onOpenMuseum={() => setIsMuseumOpen(true)} />,
+    beranda: <BerandaTab onOpenMuseum={() => setActive3DRoom('main')} />,
     konten: <KontenTab targetProvId={targetProvId} onClearTargetProvId={() => setTargetProvId(null)} />,
     panduan: <PanduanTab />,
     tentang: <TentangTab />,
   };
+
+  // Mapping audio background based on provId
+  const getBgmSource = () => {
+    if (!active3DRoom || active3DRoom === 'main') {
+      return "/audio/Sabilulungan.mp3";
+    }
+    const bgmMap = {
+      'sumbar': 'sumatera.mp3',
+      'jabar': 'jawabarat.mp3',
+      'jateng': 'jawatengah.mp3',
+      'bali': 'bali.mp3',
+      'kalimantan': 'kalimantan.mp3',
+      'papua': 'papua.mp3',
+      'sulsel': 'sulawesi.mp3'
+    };
+    const bgmFile = bgmMap[active3DRoom] || 'Sabilulungan.mp3';
+    return `/audio/bgmdaerah/${bgmFile}`;
+  };
+
+  const bgmSource = getBgmSource();
+
+  // Reload audio automatically when source changes and playing
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+      if (isPlaying) {
+        audioRef.current.play().catch(() => {});
+      }
+    }
+  }, [bgmSource, isPlaying]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -102,7 +134,7 @@ export default function App() {
       <div className="fixed inset-0 z-0 bg-black/30" />
 
       {/* BGM Audio */}
-      <audio ref={audioRef} src="/audio/Sabilulungan.mp3" loop preload="auto" />
+      <audio ref={audioRef} src={bgmSource} loop preload="auto" />
 
       {/* Audio Player — bottom right */}
       <button
@@ -123,13 +155,13 @@ export default function App() {
 
       {/* Content */}
       <div className="relative z-10">
-        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} onOpenMuseum={() => setIsMuseumOpen(true)} />
+        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} onOpenMuseum={() => setActive3DRoom('main')} />
         <main className="pt-16">
           {tabs[activeTab]}
         </main>
       </div>
 
-      {isMuseumOpen && (
+      {active3DRoom === 'main' && (
         <Museum3DOverlay 
           isMusicOn={isPlaying}
           onToggleMusic={toggleAudio}
@@ -138,11 +170,32 @@ export default function App() {
           setBgVolume={setBgVolume}
           narratorVolume={narratorVolume}
           setNarratorVolume={setNarratorVolume}
-          onClose={() => setIsMuseumOpen(false)} 
+          spawnPortalId={lastVisitedRoom}
+          onClose={() => {
+            setActive3DRoom(null);
+            setLastVisitedRoom(null);
+          }} 
           onEnterPortal={(provId) => {
-            setIsMuseumOpen(false);
-            setTargetProvId(provId);
-            setActiveTab('konten');
+            setLastVisitedRoom(provId);
+            setActive3DRoom(provId);
+          }}
+        />
+      )}
+
+      {active3DRoom && active3DRoom !== 'main' && (
+        <RegionalRoomManager 
+          provId={active3DRoom} 
+          isMusicOn={isPlaying}
+          onToggleMusic={toggleAudio}
+          onDuckMusic={duckAudio}
+          bgVolume={bgVolume}
+          setBgVolume={setBgVolume}
+          narratorVolume={narratorVolume}
+          setNarratorVolume={setNarratorVolume}
+          onExit={() => setActive3DRoom('main')}
+          onExitToHome={() => {
+            setActive3DRoom(null);
+            setLastVisitedRoom(null);
           }}
         />
       )}
