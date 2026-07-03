@@ -17,17 +17,17 @@ const guideItems = [
       'W / A / S / D — Bergerak ke depan, kiri, belakang, kanan.',
       'MOUSE — Melihat sekeliling 360°.',
       'SPASI — Melompat.',
-      'ESC — Pause / keluar dari mode penguncian mouse.',
+      'ESC/SHIFT — Pause / keluar dari mode penguncian mouse.',
     ],
   },
   {
     title: 'Interaksi dengan Objek Pajangan',
     icon: '',
     steps: [
-      'Dekati meja pajangan di dalam museum.',
+      'Dekati meja pajangan di dalam museum dan lakukan interaksi.',
       'Panel informasi akan muncul otomatis.',
-      'Audio narator akan membacakan informasi objek.',
-      'Tingkatkan volume untuk menonaktifkan narator suara.',
+      'Audio narator akan membacakan informasi objek ketika menekan tombol play.',
+      'Tingkatkan atau turunkan volume pada mode interaktif',
     ],
   },
 ];
@@ -37,42 +37,47 @@ export default function PanduanTab() {
 
   return (
     <section className="py-20 px-4 bg-gray-50 min-h-screen">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Panduan Penggunaan</h2>
-          <div className="w-24 h-1 bg-amber-600 mx-auto rounded" />
-          <p className="mt-4 text-gray-600">Pelajari cara menggunakan aplikasi WarisanBudaya.</p>
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-start">
+        {/* Left Column: Sticky Header */}
+        <div className="w-full md:w-1/3 md:sticky md:top-24 text-left">
+          <h2 className="text-4xl font-serif font-bold text-zinc-900 mb-4">Panduan Penggunaan</h2>
+          <p className="mt-4 text-zinc-600 text-lg">Pelajari cara menavigasi dan berinteraksi di dalam museum virtual WarisanBudaya.</p>
         </div>
 
-        <div className="space-y-4">
+        {/* Right Column: Accordions */}
+        <div className="w-full md:w-2/3 space-y-4">
           {guideItems.map((item, idx) => (
-            <div key={idx} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <div key={idx} className="bg-white rounded-xl border border-zinc-200 shadow-sm overflow-hidden group">
               <button
-                className="w-full flex items-center justify-between p-5 text-left hover:bg-amber-50 transition"
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-amber-50/50 transition-colors"
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 aria-expanded={openIndex === idx}
                 aria-controls={`panduan-panel-${idx}`}
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{item.icon}</span>
-                  <span className="font-semibold text-gray-900">{item.title}</span>
+                <div className="flex items-center gap-4">
+                  {item.icon && <span className="text-2xl">{item.icon}</span>}
+                  <span className="text-lg font-semibold text-zinc-900">{item.title}</span>
                 </div>
-                <span className={`text-amber-600 transition-transform duration-200 ${openIndex === idx ? 'rotate-180' : ''}`}>
+                <span className={`text-zinc-400 transition-transform duration-300 ${openIndex === idx ? 'rotate-180 text-amber-700' : 'group-hover:text-amber-700'}`}>
                   ▼
                 </span>
               </button>
-              {openIndex === idx && (
-                <div id={`panduan-panel-${idx}`} className="px-5 pb-5 border-t border-gray-100">
-                  <ul className="mt-4 space-y-2">
+
+              <div
+                id={`panduan-panel-${idx}`}
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === idx ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+              >
+                <div className="px-6 pb-6 pt-2 border-t border-zinc-100">
+                  <ul className="space-y-3">
                     {item.steps.map((step, si) => (
-                      <li key={si} className="flex gap-3 text-gray-700 text-sm">
-                        <span className="text-amber-600 font-bold shrink-0">{si + 1}.</span>
+                      <li key={si} className="flex gap-4 text-zinc-600 text-base">
+                        <span className="text-amber-700 font-bold shrink-0">{si + 1}.</span>
                         <span>{step}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

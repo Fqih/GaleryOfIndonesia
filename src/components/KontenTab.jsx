@@ -1,8 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { provincesData } from '../data/provincesData.jsx';
 
-export default function KontenTab() {
+export default function KontenTab({ targetProvId, onClearTargetProvId }) {
   const [selectedProv, setSelectedProv] = useState(null);
+
+  useEffect(() => {
+    if (targetProvId) {
+      const prov = provincesData.find((p) => p.id === targetProvId);
+      if (prov) {
+        setSelectedProv(prov);
+      }
+      if (onClearTargetProvId) {
+        onClearTargetProvId();
+      }
+    }
+  }, [targetProvId, onClearTargetProvId]);
 
   return (
     <>
@@ -20,10 +32,9 @@ export default function KontenTab() {
         <div className="absolute inset-0 z-0 bg-white" />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Koleksi Pameran Galeri</h2>
-            <div className="w-24 h-1 bg-amber-600 mx-auto rounded" />
-            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">Koleksi Pameran Galeri</h2>
+            <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
               Pelajari kekayaan budaya dari 7 provinsi yang akan dikunjungi di museum virtual.
             </p>
           </div>
@@ -39,17 +50,18 @@ export default function KontenTab() {
                   {prov.cardImage ? (
                     <img
                       src={prov.cardImage}
-                      alt={`Rumah Adat ${prov.name}`}
+                      alt={`Ikon Arsitektur ${prov.name}`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <div
-                      className="w-full h-full flex items-center justify-center"
-                      style={{ backgroundColor: prov.color + '33' }}
+                      className="w-full h-full flex items-center justify-center relative overflow-hidden"
+                      style={{ backgroundColor: prov.color + '22' }}
                     >
-                      <span className="text-white text-5xl font-serif font-bold opacity-60">
-                        {prov.exhibits[0].value.charAt(0)}
-                      </span>
+                      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px', color: prov.color }}></div>
+                      <svg className="w-16 h-16 opacity-30" style={{ color: prov.color }} fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z" />
+                      </svg>
                     </div>
                   )}
                   {/* Gradient overlay */}
@@ -106,12 +118,13 @@ export default function KontenTab() {
                 />
               ) : (
                 <div
-                  className="w-full h-full flex items-center justify-center"
-                  style={{ backgroundColor: selectedProv.color }}
+                  className="w-full h-full flex items-center justify-center relative overflow-hidden"
+                  style={{ backgroundColor: selectedProv.color + '33' }}
                 >
-                  <span className="text-white text-6xl font-serif font-bold opacity-40">
-                    {selectedProv.exhibits[0].value.charAt(0)}
-                  </span>
+                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px', color: selectedProv.color }}></div>
+                  <svg className="w-24 h-24 opacity-30" style={{ color: selectedProv.color }} fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z" />
+                  </svg>
                 </div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
